@@ -9,17 +9,17 @@ function TodoPage() {
     {
       text: "Learn about React",
       status: "Todo",
-      dateString: new Date().toDateString()
+      deadline: new Date().toDateString()
     },
     {
       text: "Meet friend for lunch",
       status: "Todo",
-      dateString: new Date().toDateString()
+      deadline: new Date().toDateString()
     },
     {
       text: "Build really cool todo app",
       status: "Done",
-      dateString: new Date().toDateString()
+      deadline: new Date().toDateString()
      }
   ]);
 
