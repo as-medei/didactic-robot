@@ -7,17 +7,26 @@ interface Props {
 
 function AddTodoForm({ todos, setTodos }: Props) {
   const [value, setValue] = React.useState("");
-  const addTodo = (text: string) => {
-    let date: Date = new Date();
-    date.setDate(date.getDate() + 10);
-    let dateString: string = date.toDateString();
-    const status: string = "Todo";
-    const newTodos: TodoType[] = [...todos, { text, dateString, status }];
-    setTodos(newTodos);
-    setValue("");
+  const [deadline, setDeadline] = React.useState("");
+
+  const addTodo = (text: string, deadline: string) => {
+    if(text!==""){
+      const status: string = "Todo";
+      if(deadline==="")
+        deadline = "dd/mm/yyyy";
+        const id:number= todos.length +1;
+      const newTodos: TodoType[] = [...todos, { id,text, deadline, status }];
+      setTodos(newTodos);
+      setValue("");
+      setDeadline("");
+    }
+
   };
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setValue(event.target.value);
+  };
+  const handleChangeDeadline = (event: ChangeEvent<HTMLInputElement>): void => {
+    setDeadline(event.target.value);
   };
 
   return (
@@ -29,7 +38,14 @@ function AddTodoForm({ todos, setTodos }: Props) {
         value={value}
         onChange={handleChange}
       />
-      <button onClick={() => addTodo(value)}>Add Task</button>
+      <input
+        type="Date"
+        className="input"
+        placeholder="Date..."
+        value={deadline}
+        onChange={handleChangeDeadline}
+      />
+      <button onClick={() => addTodo(value, deadline)}>Add Task</button>
     </div>
   );
 }
