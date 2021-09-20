@@ -1,9 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import Todos from './Todos';
+import React, { FC } from "react";
+import TodoPage from './pages/todoPage.component';
+import './App.css';
 
-function App() {
-  return <Todos />;
+const App: FC = () => {
+  return (
+    <div className="app">
+      <TodoPage />;
+    </div>
+  )
 }
 
 export default App;
