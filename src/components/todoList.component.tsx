@@ -14,10 +14,10 @@ function TodoList({ todos, setTodos }: Props) {
 
   return (
     <div className="todo-list">
-      {todos.map((todo, index) => (
+      {todos.map((todo) => (
         <Todo
-          key={index}
-          index={index}
+          key={todo.id}
+        
           todo={todo}
           removeTodo={removeTodo}
         />
